@@ -1,7 +1,7 @@
 run :-
     write('*******************'), nl,
     write('*   B-C-R-I-T-W   *'), nl,
-    write('*******************'), nl
+    write('*******************'), nl,
     nl,
     checkMeal(Meal),
     write('You can cook '), write(Meal), write('.'), nl,
