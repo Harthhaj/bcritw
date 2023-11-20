@@ -4,33 +4,85 @@ run :-
     write('*******************'), nl,
     nl,
     checkMeal(Meal),
-    write('You can cook '), write(Meal), write('.'), nl,
+    write('Dude,You can cook '), write(Meal), write('.'), nl,
     undo.
 
 checkMeal(kebbah) :- kebbah.
-% checkMeal(safarjaliah) :- safarjaliah, !.
-% checkMeal('arman blaban') :- armanBlaban, !.
-% checkMeal(mehshi) :- mehshi, !.
-% checkMeal(mlukhiah) :- mlukhiah, !.
 checkMeal(bamia) :- bamia.
-% checkMeal(fasoliah) :- fasoliah, !.
-% checkMeal(mjadarah) :- mjadarah, !.
-% checkMeal(hamees) :- hamees, !.
+checkMeal(safargeliah) :- safargeliah.
+checkMeal(mehshi) :- mehshi.
+checkMeal(mulukhiyah) :- mulukhiyah.
+checkMeal(fasolia) :- fasolia.
+checkMeal(mjadarah) :- mjadarah.
+checkMeal(spaghetti) :- spaghetti.
+checkMeal(yabraq) :- yabraq.
+checkMeal(orman_blaban) :- orman_blaban.
 
-checkMeal(noting).
+
+checkMeal("noting with this ingredients").
 
 kebbah :-
-    checkIngredient(burghol),
     checkIngredient(meat),
     checkIngredient(onion),
-    checkIngredient(spices).
+    checkIngredient(spices),
+    checkIngredient(bulgur).
 
 bamia :-
     checkIngredient(meat),
+    checkIngredient(tomato_souce),
     checkIngredient(okra),
     checkIngredient(bread),
-    checkIngredient(tomato),
     checkIngredient(spices).
+
+safargeliah :-
+    checkIngredient(meat),
+    checkIngredient(tomato_souce),
+    checkIngredient(spices),
+    checkIngredient(quince).
+
+mehshi :- 
+    checkIngredient(meat),
+    checkIngredient(vegetables),
+    checkIngredient(rice),
+    checkIngredient(spices).
+
+mulukhiyah :- 
+    checkIngredient(meat),
+    checkIngredient(garlic),
+    checkIngredient(spices),
+    checkIngredient(mulukhiyahs).
+
+fasolia :- 
+    checkIngredient(meat),
+    checkIngredient(tomato_souce),
+    checkIngredient(garlic),
+    checkIngredient(spices),
+    checkIngredient(beans).
+
+mjadarah :- 
+    checkIngredient(onion),
+    checkIngredient(bulgur),
+    checkIngredient(lentil).
+
+spaghetti :- 
+    checkIngredient(tomato_souce),
+    checkIngredient(vegetables),
+    checkIngredient(spices),
+    checkIngredient(macaroni).
+
+yabraq :- 
+    checkIngredient(meat),
+    checkIngredient(rice),
+    checkIngredient(garlic),
+    checkIngredient(spices),
+    checkIngredient(grape_leaves).
+
+orman_blaban :- 
+    checkIngredient(meat),
+    checkIngredient(spices),
+    checkIngredient(butter),
+    checkIngredient(yogurt),
+    checkIngredient(corn_starch).
 
 askAbout(Ingredient) :-
     write('Do you have '), write(Ingredient), write('? '), read(Reply),
