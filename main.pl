@@ -1,112 +1,72 @@
+meals([
+    ['Kebbah', ['Spices', 'Meat', 'Onion', 'Bulgur']],
+    ['Bamia', ['Spices', 'Meat', 'Tomato Souce', 'Okra', 'Bread']],
+    ['Safargeliah', ['Spices', 'Meat', 'Tomato Souce', 'Quince']],
+    ['Mehshi', ['Spices', 'Meat', 'Vegetables', 'Rice']],
+    ['Mulukhiyah', ['Spices', 'Meat', 'Garlic', 'Mulukhiyah Leaves']],
+    ['Fasolia', ['Spices', 'Meat', 'Tomato Souce', 'Garlic', 'Beans']],
+    ['Mjadarah', ['Onion', 'Bulgur', 'Lentil']],
+    ['Spaghetti', ['Spices', 'Tomato Souce', 'Vegetables', 'Macaroni']],
+    ['Yabraq', ['Spices', 'Meat', 'Garlic', 'Rice', 'Grape Leaves']],
+    ['Orman-Blaban', ['Spices', 'Meat', 'Butter', 'Yogurt', 'Corn Starch']]
+]).
+
 run :-
+    print_welcome,
+    meals(Meals),
+    check_meals(Meals),
+    undo.
+
+
+print_welcome :-
     write('*******************'), nl,
     write('*   B-C-R-I-T-W   *'), nl,
     write('*******************'), nl,
+    nl.
+
+
+check_meals([]) :-
+    write('You cannot cook anything else!'), nl,
     nl,
-    checkMeal(Meal),
-    write('Dude,You can cook '), write(Meal), write('.'), nl,
-    undo.
+    true.
+check_meals([H|T]) :-
+    check_meal(H),
+    check_meals(T).
 
-checkMeal(kebbah) :- kebbah.
-checkMeal(bamia) :- bamia.
-checkMeal(safargeliah) :- safargeliah.
-checkMeal(mehshi) :- mehshi.
-checkMeal(mulukhiyah) :- mulukhiyah.
-checkMeal(fasolia) :- fasolia.
-checkMeal(mjadarah) :- mjadarah.
-checkMeal(spaghetti) :- spaghetti.
-checkMeal(yabraq) :- yabraq.
-checkMeal(orman_blaban) :- orman_blaban.
+check_meal([MealName, Ingredients]) :-
+    check_ingredients(Ingredients),
+    nl,
+    write('* You can cook '), write(MealName), write(' *'), nl,
+    nl,
+    true ;
+    true. % it'll always return `true`, even if `check_ingredients` returns `false`.
 
 
-checkMeal("noting with this ingredients").
+check_ingredients([]) :-
+    true.
+check_ingredients([H|T]) :-
+    check_ingredient(H),
+    check_ingredients(T).
 
-kebbah :-
-    checkIngredient(meat),
-    checkIngredient(onion),
-    checkIngredient(spices),
-    checkIngredient(bulgur).
+check_ingredient(Ingredient) :-
+    yes(Ingredient) -> true ;
+    no(Ingredient) -> fail ;
+    ask_about(Ingredient).
 
-bamia :-
-    checkIngredient(meat),
-    checkIngredient(tomato_souce),
-    checkIngredient(okra),
-    checkIngredient(bread),
-    checkIngredient(spices).
 
-safargeliah :-
-    checkIngredient(meat),
-    checkIngredient(tomato_souce),
-    checkIngredient(spices),
-    checkIngredient(quince).
-
-mehshi :- 
-    checkIngredient(meat),
-    checkIngredient(vegetables),
-    checkIngredient(rice),
-    checkIngredient(spices).
-
-mulukhiyah :- 
-    checkIngredient(meat),
-    checkIngredient(garlic),
-    checkIngredient(spices),
-    checkIngredient(mulukhiyahs).
-
-fasolia :- 
-    checkIngredient(meat),
-    checkIngredient(tomato_souce),
-    checkIngredient(garlic),
-    checkIngredient(spices),
-    checkIngredient(beans).
-
-mjadarah :- 
-    checkIngredient(onion),
-    checkIngredient(bulgur),
-    checkIngredient(lentil).
-
-spaghetti :- 
-    checkIngredient(tomato_souce),
-    checkIngredient(vegetables),
-    checkIngredient(spices),
-    checkIngredient(macaroni).
-
-yabraq :- 
-    checkIngredient(meat),
-    checkIngredient(rice),
-    checkIngredient(garlic),
-    checkIngredient(spices),
-    checkIngredient(grape_leaves).
-
-orman_blaban :- 
-    checkIngredient(meat),
-    checkIngredient(spices),
-    checkIngredient(butter),
-    checkIngredient(yogurt),
-    checkIngredient(corn_starch).
-
-askAbout(Ingredient) :-
+ask_about(Ingredient) :-
     write('Do you have '), write(Ingredient), write('? '), read(Reply),
     (
-        /* assert yes to the ques add to wroking memory */
-        (Reply == yes ; Reply == y ; Reply == no) -> 
-            assert(yes(Ingredient));
-        /* assert no to ques and fail*/
-        assert(no(Ingredient)),
-        fail
-    ).  
-
-/* yes or no will change dynamically according to the conditions */
-:-
-    dynamic yes/1, no/1.
-
-checkIngredient(I) :-
-    (
-        yes(I) -> true ;
-        no(I) -> fail ;
-        askAbout(I)
+        (Reply == yes ; Reply == y) -> assert(yes(Ingredient)), true ;
+        (Reply == no ; Reply == n) -> assert(no(Ingredient)), fail ;
+        write('Invalid answer! (write \'yes.\' or \'no.\')'), nl,
+        ask_about(Ingredient)
     ).
 
-/* clearing all the memory assigned using undo statements */
+
+:- dynamic yes/1, no/1.
+
+
 undo :-
     retract(yes(_)),
     fail.
