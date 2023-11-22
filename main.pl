@@ -1,4 +1,5 @@
 meals([
+    ['Labania', ['Yogurt','Rice','Meat','Spices','Garlic', 'Egges']],
     ['Kebbah', ['Spices', 'Meat', 'Onion', 'Bulgur']],
     ['Bamia', ['Spices', 'Meat', 'Tomato Souce', 'Okra', 'Bread']],
     ['Safargeliah', ['Spices', 'Meat', 'Tomato Souce', 'Quince']],
@@ -8,7 +9,7 @@ meals([
     ['Mjadarah', ['Onion', 'Bulgur', 'Lentil']],
     ['Spaghetti', ['Spices', 'Tomato Souce', 'Vegetables', 'Macaroni']],
     ['Yabraq', ['Spices', 'Meat', 'Garlic', 'Rice', 'Grape Leaves']],
-    ['Orman-Blaban', ['Spices', 'Meat', 'Butter', 'Yogurt', 'Corn Starch']]
+    ['Orman-Blaban', ['Spices', 'Meat', 'Butter', 'Yogurt', 'Corn Starch', 'Egges']]
 ]).
 
 run :-
