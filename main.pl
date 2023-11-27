@@ -83,4 +83,7 @@ undo.
 
 exit :-
     undo,
+    nl,
+    write("********** Thank you for using this App **********"),nl,
+    nl,
     halt.
