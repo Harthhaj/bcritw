@@ -39,7 +39,7 @@ check_meal([MealName, Ingredients]) :-
     write('* You can cook '), write(MealName), write(' *'), nl,
     ask_to_complete.
 
-check_meal(_). % it'll always return `true`, even if `check_ingredients` returns `false`.
+check_meal(_). % it will always return `true`, even if `check_ingredients` returns `false`.
 
 check_ingredients([]).
 check_ingredients([H|T]) :-
