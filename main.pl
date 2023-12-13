@@ -21,12 +21,10 @@ check_meals([H|T]) :-
     check_meal(H),
     check_meals(T).
 
-check_meal([MealName, Ingredients, HowToPrepare]) :-
+check_meal([MealName, Ingredients]) :-
     check_ingredients(Ingredients),
     nl,
     write('* You can cook '), write(MealName), write(' *'), nl,
-    write('To cook that, follow the instructions:'), nl,
-    write(HowToPrepare), nl,
     nl,
     ask_to_complete.
 

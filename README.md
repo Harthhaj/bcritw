@@ -1,12 +1,14 @@
 # BCRITW
 
-Best Cooking Recommender in The World.
+Best Cooking Recommender In The World.
 
 Just a `Prolog` project for the college.
 
 ## Introduction
 
-In this CLI-Based program, you are supposed to tell it what are the ingredients you have (by answering yes/no questions), and it'll recommend you some meals to cook with these ingredients, and also it will tell you how to prepare that meal.
+In this CLI-Based program, you are supposed to tell it what are the ingredients you have (by answering yes/no questions), and it'll recommend you some meals to cook with these ingredients.
+
+Good look!
 
 ## Requirements
 
