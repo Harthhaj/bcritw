@@ -177,6 +177,6 @@ meals([
         '10. Simmer on low heat for 45-60 minutes or until the rice is cooked and the grape leaves are tender.\n',
         '11. Serve the Syrian Yabraq hot, optionally with a side of yogurt or a squeeze of lemon.\n',
         '12. Enjoy this delicious and savory Syrian dish!\n'
-    ],
+    ]
 
 ]).
