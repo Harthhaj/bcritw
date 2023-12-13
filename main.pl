@@ -6,13 +6,11 @@ run :-
     check_meals(Meals),
     exit.
 
-
 print_welcome :-
     write('*****************************'), nl,
     write('*        B-C-R-I-T-W        *'), nl,
     write('*****************************'), nl,
     nl.
-
 
 check_meals([]) :-
     write('You cannot cook anything else!'), nl,
